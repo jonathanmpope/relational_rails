@@ -40,7 +40,6 @@ RSpec.describe 'lessons show page' do
         lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
 
         visit "/lessons/#{lesson1.id}"
-        save_and_open_page
 
         expect(page).to have_content("Completed: yes")
     end
