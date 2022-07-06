@@ -25,7 +25,7 @@ RSpec.describe 'lessons show page' do
         expect(page).to have_content("Format: #{lesson1.format}")
     end 
 
-    it 'shows the number of lessons' do 
+    it 'shows the number of lessons', type: :feature do 
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
         lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
 

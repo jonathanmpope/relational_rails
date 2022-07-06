@@ -5,7 +5,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Show page' do
+RSpec.describe 'Show page', type: :feature do
     it 'will show a single course name' do 
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
 

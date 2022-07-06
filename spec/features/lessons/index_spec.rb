@@ -4,7 +4,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'lesson index page' do 
+RSpec.describe 'lesson index page', type: :feature do 
     it 'can show the lesson name' do 
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
         lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
