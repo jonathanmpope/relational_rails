@@ -1,2 +1,7 @@
 <h1><%= @course.name %> </h1>
 <p>Participants: <%= @course.participants %></p>
+<% if @course.complete == true %>
+    <p>Completed: yes</p>
+<% else %>
+    <p>Completed: no</p>
+<% end %>

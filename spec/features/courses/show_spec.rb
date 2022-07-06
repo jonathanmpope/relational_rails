@@ -18,9 +18,16 @@ RSpec.describe 'Show page' do
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
 
         visit "/courses/#{course1.id}"
-        save_and_open_page 
 
         expect(page).to have_content(course1.participants)
         expect(page).to have_content("Participants: #{course1.participants}")
+    end 
+
+    it 'will show a single course participants' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: false)
+
+        visit "/courses/#{course1.id}"
+
+        expect(page).to have_content("Completed: no")
     end 
 end 
