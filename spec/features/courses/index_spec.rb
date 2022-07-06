@@ -21,9 +21,19 @@ RSpec.describe "Courses index page", type: :feature do
         course2 = Course.create!(name: "Listening", participants: 12, complete: false)
 
         visit '/courses'
-        save_and_open_page
 
         expect(page).to have_content(course1.participants)
         expect(page).to have_content("Participants: #{course2.participants}")
+    end 
+
+    it 'can see if course has been completed' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+        course2 = Course.create!(name: "Listening", participants: 12, complete: false)
+
+        visit '/courses'
+        save_and_open_page
+
+        expect(page).to have_content("Completed: yes")
+        expect(page).to have_content("Completed: no")
     end 
 end 

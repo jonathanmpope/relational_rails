@@ -1,4 +1,9 @@
 <% @courses.each do |course| %>
     <p>Name: <%= course.name %></p>
     <p>Participants: <%= course.participants %></p>
+        <% if course.complete == true %>
+           <p>Completed: yes</p>
+        <% else %>
+            <p>Completed: no</p>
+        <% end %>
 <% end %>
