@@ -72,4 +72,13 @@ RSpec.describe "Courses index page", type: :feature do
 
         expect(current_path).to eq('/courses')
     end 
+
+     it 'has a link to create a new course' do 
+        visit '/courses'
+        save_and_open_page 
+        
+        click_link('New Course')
+
+        expect(current_path).to eq('/courses/new')
+    end 
 end 
