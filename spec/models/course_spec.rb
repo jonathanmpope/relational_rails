@@ -1,6 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe 'the courses show page' , type: :model do 
+RSpec.describe Course , type: :model do 
+    describe 'relationships' do 
+        
+    end 
+
+    describe 'validations' do
+        
+    end 
+
     describe 'instance methods' do
         describe '#count' do
 

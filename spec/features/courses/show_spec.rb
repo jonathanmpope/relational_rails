@@ -39,7 +39,6 @@ RSpec.describe 'Show page', type: :feature do
         lesson4 = course1.lessons.create!(name:"Quit tomorrow", format:"video", questions:1, complete: false)
 
         visit "/courses/#{course1.id}"
-        save_and_open_page 
 
         expect(page).to have_content("Number of lessons: #{course1.count}")
     end 
