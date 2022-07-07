@@ -12,8 +12,10 @@ RSpec.describe "Courses edit page", type: :feature do
 
         fill_in("Name", with:"Basics 101")
         click_button("Update Course")
+
+        save_and_open_page
         
-        expect(current_path).to eq("/courses")
+        expect(current_path).to eq("/courses/#{course1.id}")
         expect(page).to have_content("Basics 101")
     end 
 end 

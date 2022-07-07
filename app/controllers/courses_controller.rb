@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
     def update
         course = Course.find(params[:id])
         course.update(name: params[:name])
-        redirect_to "/courses"
+        redirect_to "/courses/#{course.id}"
     end 
 
 end 
