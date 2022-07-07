@@ -6,6 +6,9 @@ require 'rails_helper'
 # Then I see the name of each parent record in the system
 
 RSpec.describe "Courses index page", type: :feature do 
+    let(:coursename1) { "<p>Name: Basics</p>" }
+    let(:coursename2) { "<p>Name: Listening</p>" }
+
     it 'can see the name of each course in the system' do 
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
         course2 = Course.create!(name: "Listening", participants: 12, complete: false)
@@ -36,15 +39,15 @@ RSpec.describe "Courses index page", type: :feature do
         expect(page).to have_content("Completed: no")
     end 
 
-    # it 'sorts the index page by most recently created' do 
-    #     course1 = Course.create!(name: "Basics", participants: 20, complete: true)
-    #     course2 = Course.create!(name: "Listening", participants: 12, complete: false)
+    it 'sorts the index page by most recently created' do 
+        
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+        course2 = Course.create!(name: "Listening", participants: 12, complete: false)
 
-    #     visit '/courses'
+        visit '/courses'
 
-    #     expect(page.all[0]).to have_content("Basics")
-    #     expect(page.all[1]).to have_content("Listening")
-    # end 
+        expect(coursename1).to appear_before(coursename2)     
+    end 
 
     it 'can show when each course was created' do 
         course1 = Course.create!(name: "Basics", participants: 20, complete: true)
