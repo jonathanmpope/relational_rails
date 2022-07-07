@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/courses', to: 'courses#index'
   get '/courses/new', to: 'courses#new'
   get '/courses/:id', to: 'courses#show'
+  post '/courses', to: 'courses#create'
   get '/lessons', to: 'lessons#index'
   get '/lessons/:id', to: 'lessons#show'
   get '/courses/:course_id/lessons', to: 'course_lessons#index'

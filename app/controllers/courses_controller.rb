@@ -9,7 +9,11 @@ class CoursesController < ApplicationController
     end 
 
     def new 
-
     end 
+
+    def create
+        Course.create(name: params[:name], participants: 0, complete: false)
+        redirect_to "/courses"
+    end
 
 end 
