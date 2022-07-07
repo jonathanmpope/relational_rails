@@ -9,6 +9,7 @@ RSpec.describe Lesson, type: :model do
         it { should validate_presence_of :name}
         it { should validate_presence_of :format}
         it { should validate_presence_of :questions}
+        it { should  allow_value(true).for(:complete)}
     end 
 
     describe 'instance methods' do 
