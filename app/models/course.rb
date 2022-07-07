@@ -2,6 +2,7 @@ class Course < ApplicationRecord
     has_many :lessons
     validates_presence_of :name
     validates_presence_of :participants
+    validates :complete, inclusion: [true, false]
 
     def count 
         self.lessons.count

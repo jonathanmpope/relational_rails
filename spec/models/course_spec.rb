@@ -8,7 +8,7 @@ RSpec.describe Course , type: :model do
     describe 'validations' do
          it { should validate_presence_of :name}
          it { should validate_presence_of :participants}
-        
+        it { should  allow_value(true).for(:complete)}
     end 
 
     describe 'instance methods' do
