@@ -44,4 +44,13 @@ RSpec.describe 'lessons show page' do
         expect(page).to have_content("Completed: yes")
     end
 
+    it 'has a link to the lessons index page' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: false)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+
+        visit "/lessons/#{lesson1.id}"
+        click_link('Lessons')
+
+        expect(current_path).to eq('/lessons')
+    end
 end 
