@@ -58,4 +58,14 @@ RSpec.describe "Courses index page", type: :feature do
         expect(page).to have_content("Created: #{course1.created_at}")
         expect(page).to have_content("Created: #{course2.created_at}")
     end 
+
+    it 'has a link to the lessons index page' do 
+        visit '/courses'
+        save_and_open_page
+        click_link('Lessons')
+
+        expect(current_path).to eq('/lessons')
+    end 
+
+
 end 
