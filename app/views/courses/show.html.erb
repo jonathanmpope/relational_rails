@@ -1,4 +1,5 @@
 <%= render "links" %>
+<h3><%= link_to "Course Lessons", "/courses/#{@course.id}/lessons" %></h3>
 <h1><%= @course.name %> </h1>
 <p>Participants: <%= @course.participants %></p>
 <% if @course.complete == true %>
