@@ -43,4 +43,11 @@ RSpec.describe 'lesson index page', type: :feature do
 
         expect(page).to have_content("Completed: yes")
     end 
+
+    it 'has a link to the lessons index page' do 
+        visit '/lessons'
+        click_link('Lessons')
+
+        expect(current_path).to eq('/lessons')
+    end 
 end 
