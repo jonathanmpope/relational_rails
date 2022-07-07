@@ -1,0 +1,9 @@
+<%= form_with url:"/courses/#{@course.id}/lessons", method: :post, local: true do |form|%>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label :format %>
+    <%= form.text_field :format %>
+    <%= form.label :questions %>
+    <%= form.text_field :questions %>
+    <%= form.submit "Create Lesson"%>
+<% end %>
