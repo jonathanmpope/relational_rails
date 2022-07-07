@@ -7,4 +7,8 @@ class Course < ApplicationRecord
     def lesson_count 
         self.lessons.count
     end 
+
+    # def course_order
+    #     binding.pry  
+    # end
 end 
