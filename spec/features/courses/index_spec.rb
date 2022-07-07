@@ -66,7 +66,7 @@ RSpec.describe "Courses index page", type: :feature do
         expect(current_path).to eq('/lessons')
     end
     
-    it 'has a link to the lessons index page' do 
+    it 'has a link to the courses index page' do 
         visit '/courses'
         click_link('Courses')
 

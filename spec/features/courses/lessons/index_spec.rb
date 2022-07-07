@@ -77,7 +77,7 @@ RSpec.describe 'Course lesson index page' do
         expect(current_path).to eq('/lessons')
     end 
 
-    it 'has a link to the lessons index page' do
+    it 'has a link to the courses index page' do
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
         lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
         lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
