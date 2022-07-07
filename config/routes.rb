@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get '/lessons', to: 'lessons#index'
   get '/lessons/:id', to: 'lessons#show'
   get '/courses/:course_id/lessons', to: 'course_lessons#index'
-  
+  patch '/courses/:id', to: 'courses#update'
 end
