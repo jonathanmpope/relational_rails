@@ -31,7 +31,7 @@ RSpec.describe 'Show page', type: :feature do
         expect(page).to have_content("Completed: no")
     end 
 
-    it 'should returnt the number of lessons' do 
+    it 'should return the number of lessons' do 
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
         lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
         lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
@@ -40,7 +40,7 @@ RSpec.describe 'Show page', type: :feature do
 
         visit "/courses/#{course1.id}"
 
-        expect(page).to have_content("Number of lessons: #{course1.count}")
+        expect(page).to have_content("Number of lessons: #{course1.lesson_count}")
     end 
 
     it 'has a link to the lessons index page' do 

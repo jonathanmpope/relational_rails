@@ -21,7 +21,7 @@ RSpec.describe Course , type: :model do
                 lesson3 = course1.lessons.create!(name:"Trying is lying", format:"text", questions:2, complete: false)
                 lesson4 = course1.lessons.create!(name:"Quit tomorrow", format:"video", questions:1, complete: false)
                 
-                expect(course1.count).to eq(4)
+                expect(course1.lesson_count).to eq(4)
             end 
         end 
     end 

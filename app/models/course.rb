@@ -4,7 +4,7 @@ class Course < ApplicationRecord
     validates_presence_of :participants
     validates :complete, inclusion: [true, false]
 
-    def count 
+    def lesson_count 
         self.lessons.count
     end 
 end 
