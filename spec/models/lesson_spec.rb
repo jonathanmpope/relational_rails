@@ -25,7 +25,20 @@ RSpec.describe Lesson, type: :model do
                 expect(Lesson.show_true.first.name).to eq("Attention")
                 expect(Lesson.show_true.last.name).to eq("The Second Fear")
             end 
-         end 	
+         end
+         
+         describe '#alphabet_order' do
+
+            it 'should return the lessons in alphabetical order' do 
+                course1 = Course.create!(name: "Basics", participants: 20, complete: false)
+                lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+                lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+                lesson3 = course1.lessons.create!(name:"Trying is lying", format:"text", questions:2, complete: false)
+                lesson4 = course1.lessons.create!(name:"Quit tomorrow", format:"video", questions:1, complete: false)
+                
+                expect(Lesson.alphabet_order.first).to eq(lesson2)
+            end 
+        end 
     end 
 
 end 

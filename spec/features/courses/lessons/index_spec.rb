@@ -98,4 +98,15 @@ RSpec.describe 'Course lesson index page' do
 
         expect(current_path).to eq("/courses/#{course1.id}/lessons/new")
     end 
+
+    it 'has a link to sort children in alphabetical order' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: false)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+        lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+        
+        visit "/courses/#{course1.id}/lessons"
+        click_link('Sort Lessons Alphabetically')
+        
+        expect(current_path).to eq("/courses/#{course1.id}/lessons?sort=alphabet")
+    end 
 end 

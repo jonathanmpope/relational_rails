@@ -1,7 +1,13 @@
 class CourseLessonsController < ApplicationController
 
     def index
-        @lessons = Course.find(params[:course_id]).lessons
+        # binding.pry 
+        if params[:sort] == nil 
+            @lessons = Course.find(params[:course_id]).lessons
+        else 
+            @lessons = Lesson.alphabet_order 
+            # redirect_to "/courses/#{@course.id}/lessons?sort=alphabet"
+        end 
         @course = Course.find(params[:course_id])
     end 
 

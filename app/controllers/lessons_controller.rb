@@ -3,10 +3,10 @@ class LessonsController < ApplicationController
 
         def index 
             @lessons = Lesson.show_true 
-            # @lessons = Lesson.all 
         end 
 
         def show 
+            binding.pry
             @lesson = Lesson.find(params[:id])
         end 
 

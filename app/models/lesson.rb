@@ -8,4 +8,9 @@ class Lesson < ApplicationRecord
     def self.show_true 
         where(complete: true)
     end 
+
+    def self.alphabet_order
+        # binding.pry 
+        order(name: :asc)
+    end 
 end 
