@@ -4,4 +4,8 @@ class Lesson < ApplicationRecord
     validates_presence_of :format
     validates_presence_of :questions
     validates :complete, inclusion: [true, false]
+
+    def self.show_true 
+        where(complete: true)
+    end 
 end 
