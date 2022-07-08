@@ -3,6 +3,8 @@
 <p>Questions: <%= @lesson.questions %></p>
 <% if @lesson.complete == true %>
     <p>Completed: yes</p>
+    <h3><%= link_to "Update #{@lesson.name}", "/lessons/#{@lesson.id}/edit" %></h3>
 <% else %>
     <p>Completed: no</p>
+    <h3><%= link_to "Update #{@lesson.name}", "/lessons/#{@lesson.id}/edit" %></h3>
 <% end %>

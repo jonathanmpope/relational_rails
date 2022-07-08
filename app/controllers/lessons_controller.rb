@@ -9,4 +9,6 @@ class LessonsController < ApplicationController
             @lesson = Lesson.find(params[:id])
         end 
 
+        def edit 
+        end 
 end 
