@@ -24,5 +24,16 @@ RSpec.describe Course , type: :model do
                 expect(course1.lesson_count).to eq(4)
             end 
         end 
+
+        describe '#self.sort_by' do
+
+            it 'sorts the index page by most recently created' do 
+                course1 = Course.create!(name: "New", participants: 20, complete: true)
+                course2 = Course.create!(name: "Newer", participants: 12, complete: false)
+
+                expect(Course.course_order.first.id).to eq(course2.id)  
+                expect(Course.course_order[1].id).to eq(course1.id)   
+            end 
+        end 
     end 
 end 
