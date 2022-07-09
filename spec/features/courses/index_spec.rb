@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-# For each parent table
-# As a visitor
-# When I visit '/parents'
-# Then I see the name of each parent record in the system
-
 RSpec.describe "Courses index page", type: :feature do 
     let(:coursename1) { "<p>Name: Basics</p>" }
     let(:coursename2) { "<p>Name: Listening</p>" }

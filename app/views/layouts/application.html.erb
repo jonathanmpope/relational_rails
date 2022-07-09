@@ -9,11 +9,17 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <header>
-      <h3><%= link_to "Lessons", "/lessons" %></h3>
-      <h3><%= link_to "Courses", "/courses" %></h3>
-    </header>
+  <body class = "container">
+    <header class="item-a"><h1>My First Project</h1></header>
+    <nav class="item-b">
+      <ul>
+        <li><%= link_to "Lessons", "/lessons", {:class => "link"} %></li>
+        <li><%= link_to "Courses", "/courses", {:class => "link"} %></li>
+      </ul>
+    </nav>
+    <section class = "item-c">
     <%= yield %>
+    </section>
+    <footer class="item-d"> Something catchy </footer>
   </body>
 </html>
