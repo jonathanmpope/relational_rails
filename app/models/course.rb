@@ -8,7 +8,7 @@ class Course < ApplicationRecord
         self.lessons.count
     end 
 
-    # def course_order
-    #     binding.pry  
-    # end
+    def self.course_order
+        order(created_at: :desc)
+    end
 end 

@@ -40,13 +40,12 @@ RSpec.describe "Courses index page", type: :feature do
     end 
 
     it 'sorts the index page by most recently created' do 
-        
         course1 = Course.create!(name: "Basics", participants: 20, complete: true)
         course2 = Course.create!(name: "Listening", participants: 12, complete: false)
 
         visit '/courses'
 
-        expect(coursename1).to appear_before(coursename2)     
+        expect(coursename2).to appear_before(coursename1)     
     end 
 
     it 'can show when each course was created' do 
@@ -71,5 +70,22 @@ RSpec.describe "Courses index page", type: :feature do
         click_link('Courses')
 
         expect(current_path).to eq('/courses')
+    end 
+
+     it 'has a link to create a new course' do 
+        visit '/courses'
+        
+        click_link('New Course')
+
+        expect(current_path).to eq('/courses/new')
+    end 
+
+    it 'has a link to update each course' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+
+        visit '/courses'        
+        click_button('Update Basics')
+
+        expect(current_path).to eq("/courses/#{course1.id}/edit")
     end 
 end 

@@ -3,7 +3,9 @@
 <p>Participants: <%= @course.participants %></p>
 <% if @course.complete == true %>
     <p>Completed: yes</p>
+    <h3><%= link_to "Update #{@course.name}", "/courses/#{@course.id}/edit" %></h3>
 <% else %>
     <p>Completed: no</p>
+    <h3><%= link_to "Update #{@course.name}", "/courses/#{@course.id}/edit" %></h3>
 <% end %>
 <p>Number of lessons: <%= @course.lesson_count %></p>
