@@ -7,4 +7,5 @@
         <% else %>
             <p>Completed: no</p>
         <% end %>
+    <%= button_to "Update #{lesson.name}", "/lessons/#{lesson.id}/edit", method: :get %>
 <% end %>

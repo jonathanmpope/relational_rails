@@ -57,4 +57,14 @@ RSpec.describe 'lesson index page', type: :feature do
 
         expect(current_path).to eq('/courses')
     end 
+
+    it 'has a link to update each lesson' do
+        course1 = Course.create!(name: "Basics", participants: 20, complete: false)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true) 
+        
+        visit '/lessons'
+        click_button("Update #{lesson1.name}")
+
+        expect(current_path).to eq("/lessons/#{lesson1.id}/edit")
+    end 
 end 
