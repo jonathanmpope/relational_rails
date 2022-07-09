@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   get '/lessons/:lesson_id/edit', to: 'lessons#edit'
   patch '/lessons/:lesson_id', to: 'lessons#update'
   get '/courses/:course_id/lessons?sort=alphabet', to: 'course_lessons#index'
+  # delete '/lessons/:id', to: 'lessons#destroy'
   delete '/courses/:id', to: 'courses#destroy'
+  # 'lessons#destroy' 
 end
