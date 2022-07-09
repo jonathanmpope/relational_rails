@@ -3,11 +3,10 @@ class CourseLessonsController < ApplicationController
     def index
         @course = Course.find(params[:course_id])
         if params[:sort] == "alphabet" 
-            @lessons = @course.lessons
-        else 
             @lessons = @course.lessons.alphabet_order 
+        else 
+            @lessons = @course.lessons
         end 
-        
     end 
 
     def new 
