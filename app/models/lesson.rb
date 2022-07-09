@@ -12,4 +12,9 @@ class Lesson < ApplicationRecord
     def self.alphabet_order
         order(name: :asc)
     end 
+
+    def self.questions(number_string)
+        num = number_string.to_i
+        where("questions >= #{num}")
+    end 
 end 

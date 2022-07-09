@@ -1,4 +1,12 @@
 <%= link_to "Sort Lessons Alphabetically", "/courses/#{@course.id}/lessons?sort=alphabet", method: :get %>
+<br>
+<br>
+<%= form_with url:"/courses/#{@course.id}/lessons?sort=questions", method: :get, local: true do |form|%>
+    <%= form.label :number, "Filter by Number of Questions" %>
+    <%= form.number_field :number, required: true %>
+    <%= form.submit "Filter"%>
+<% end %>
+
 <% @lessons.each do |lesson| %>
     <p>Name: <%= lesson.name %><p>
     <p>Format: <%= lesson.format %><p>

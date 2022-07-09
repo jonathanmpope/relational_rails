@@ -2,8 +2,12 @@ class CourseLessonsController < ApplicationController
 
     def index
         @course = Course.find(params[:course_id])
+        # binding.pry 
         if params[:sort] == "alphabet" 
             @lessons = @course.lessons.alphabet_order 
+        elsif params[:commit] == "Filter"
+            @lessons = @course.lessons.questions(params[:number])
+            # redirect_to "/courses/#{@course.id}/lessons?sort=questions"
         else 
             @lessons = @course.lessons
         end 
