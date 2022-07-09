@@ -16,5 +16,4 @@ Rails.application.routes.draw do
   # get '/courses/:course_id/lessons?sort=alphabet', to: 'course_lessons#index'
   delete '/courses/:id', to: 'courses#destroy'
   delete '/lessons/:id', to: 'lessons#destroy'
-  # delete '/courses', to: 'courses#destroy'
 end

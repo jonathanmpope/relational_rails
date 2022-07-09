@@ -32,5 +32,4 @@ class CoursesController < ApplicationController
         course.destroy 
         redirect_to '/courses'
     end 
-
 end 
