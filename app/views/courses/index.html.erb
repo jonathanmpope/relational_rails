@@ -8,4 +8,5 @@
             <p>Completed: no</p>
         <% end %>
     <p>Created: <%= course.created_at %></p> 
+    <%= button_to "Update #{course.name}", "/courses/#{course.id}/edit", method: :get %>
 <% end %>

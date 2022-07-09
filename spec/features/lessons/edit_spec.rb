@@ -15,7 +15,6 @@ RSpec.describe 'lesson edit page', type: :feature do
         fill_in("Format", with:"text")
         fill_in("Questions", with:2)
         click_button("Update Lesson")
-        save_and_open_page
 
         expect(current_path).to eq("/lessons/#{lesson1.id}")
         expect(page).to have_content("Thinking about nothing")

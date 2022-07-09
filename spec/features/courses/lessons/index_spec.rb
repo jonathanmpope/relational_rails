@@ -108,6 +108,5 @@ RSpec.describe 'Course lesson index page' do
         click_link('Sort Lessons Alphabetically')
         
         expect(page).to have_current_path("/courses/#{course1.id}/lessons?sort=alphabet")
-        # expect(current_path).to eq("/courses/#{course1.id}/lessons?sort=alphabet")
     end 
 end 
