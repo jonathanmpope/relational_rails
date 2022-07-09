@@ -94,4 +94,21 @@ RSpec.describe 'Show page', type: :feature do
 
         expect(current_path).to eq("/courses/#{course1.id}/edit")
     end
+
+    it 'has a link to delete each course and its lessons' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+        lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+
+        visit "/courses/#{course1.id}"       
+        click_button('Delete Basics')
+
+        expect(current_path).to eq("/courses")
+        expect(page).to_not have_content("Basics")
+
+        visit '/lessons'
+
+        expect(page).to_not have_content("Thinking about thinking")
+        expect(page).to_not have_content("Attention")
+    end 
 end 

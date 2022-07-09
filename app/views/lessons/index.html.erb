@@ -8,4 +8,5 @@
             <p>Completed: no</p>
         <% end %>
     <%= button_to "Update #{lesson.name}", "/lessons/#{lesson.id}/edit", method: :get %>
+    <%= button_to "Delete #{lesson.name}", "/lessons/#{lesson.id}", method: :delete %>
 <% end %>

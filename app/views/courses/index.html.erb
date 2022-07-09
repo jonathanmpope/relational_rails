@@ -9,4 +9,7 @@
         <% end %>
     <p>Created: <%= course.created_at %></p> 
     <%= button_to "Update #{course.name}", "/courses/#{course.id}/edit", method: :get %>
+    <%= button_to "Delete #{course.name}", "/courses/#{course.id}", method: :delete %>
+    <%= button_to "View #{course.name} Lessons", "/courses/#{course.id}/lessons", method: :get %>
+
 <% end %>

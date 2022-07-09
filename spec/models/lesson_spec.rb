@@ -28,7 +28,6 @@ RSpec.describe Lesson, type: :model do
          end
          
          describe '#alphabet_order' do
-
             it 'should return the lessons in alphabetical order' do 
                 course1 = Course.create!(name: "Basics", participants: 20, complete: false)
                 lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
@@ -39,6 +38,17 @@ RSpec.describe Lesson, type: :model do
                 expect(Lesson.alphabet_order.first).to eq(lesson2)
             end 
         end 
-    end 
 
+        describe '#questions' do
+            it 'should return only lessons equal to or above the query' do 
+                course1 = Course.create!(name: "Basics", participants: 20, complete: false)
+                lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+                lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+                lesson3 = course1.lessons.create!(name:"Trying is lying", format:"text", questions:2, complete: false)
+                lesson4 = course1.lessons.create!(name:"Quit tomorrow", format:"video", questions:1, complete: false)
+                
+                expect(Lesson.questions(3).length).to eq(2)
+            end 
+        end 
+    end 
 end 

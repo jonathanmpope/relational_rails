@@ -88,4 +88,14 @@ RSpec.describe "Courses index page", type: :feature do
 
         expect(current_path).to eq("/courses/#{course1.id}/edit")
     end 
+
+    it 'has a link to delete each course' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+
+        visit '/courses'        
+        click_button('Delete Basics')
+
+        expect(current_path).to eq("/courses")
+        expect(page).to_not have_content("Basics")
+    end 
 end 

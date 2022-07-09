@@ -119,4 +119,25 @@ RSpec.describe 'Course lesson index page' do
 
         expect(current_path).to eq("/lessons/#{lesson1.id}/edit")
     end 
+
+    it 'has a form that allows you to input a number' do
+        course1 = Course.create!(name: "Basics", participants: 20, complete: false)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+        lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:0, complete: true)
+        
+        visit "/courses/#{course1.id}/lessons"
+        fill_in("Number", with:2)
+        click_button("Filter")
+
+        # expect(page).to have_current_path("/courses/#{course1.id}/lessons?sort=questions")
+        expect(page).to_not have_content("Attention")
+        expect(page).to have_content("Thinking about thinking")
+
+        visit "/courses/#{course1.id}/lessons"
+        fill_in("Number", with:4)
+        click_button("Filter")
+
+        expect(page).to_not have_content("Attention")
+        expect(page).to_not have_content("Thinking about thinking")
+    end 
 end 
