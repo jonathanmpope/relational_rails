@@ -6,7 +6,6 @@ class LessonsController < ApplicationController
         end 
 
         def show 
-            binding.pry
             @lesson = Lesson.find(params[:id])
         end 
 

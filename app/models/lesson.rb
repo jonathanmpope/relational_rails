@@ -10,7 +10,6 @@ class Lesson < ApplicationRecord
     end 
 
     def self.alphabet_order
-        # binding.pry 
         order(name: :asc)
     end 
 end 
