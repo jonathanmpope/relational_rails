@@ -8,4 +8,5 @@
     <p>Completed: no</p>
     <h3><%= link_to "Update #{@course.name}", "/courses/#{@course.id}/edit" %></h3>
 <% end %>
+<%= button_to "Delete #{@course.name}", "/courses/#{@course.id}", method: :delete %>
 <p>Number of lessons: <%= @course.lesson_count %></p>

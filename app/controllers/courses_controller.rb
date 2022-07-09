@@ -26,4 +26,8 @@ class CoursesController < ApplicationController
         redirect_to "/courses/#{course.id}"
     end 
 
+    def destroy
+        redirect_to '/courses'
+    end 
+
 end 
