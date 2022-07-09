@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   post '/courses/:course_id/lessons', to: 'course_lessons#create'
   get '/lessons/:lesson_id/edit', to: 'lessons#edit'
   patch '/lessons/:lesson_id', to: 'lessons#update'
-  get '/courses/:course_id/lessons?sort=alphabet', to: 'course_lessons#index'
-  # delete '/lessons/:id', to: 'lessons#destroy'
+  # get '/courses/:course_id/lessons?sort=alphabet', to: 'course_lessons#index'
   delete '/courses/:id', to: 'courses#destroy'
-  # 'lessons#destroy' 
+  delete '/lessons/:id', to: 'lessons#destroy'
 end
