@@ -90,7 +90,7 @@ RSpec.describe 'Course lesson index page' do
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
         visit "/courses/#{course1.id}/lessons"
         
-        click_link('New Lesson')
+        click_button('New Lesson')
 
         expect(current_path).to eq("/courses/#{course1.id}/lessons/new")
     end 

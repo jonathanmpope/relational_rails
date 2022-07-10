@@ -103,3 +103,7 @@ input {
 form {
     padding: 10px 30px;
 }
+
+form.text_field {
+    padding: 15px 32px;
+}
