@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Courses index page", type: :feature do 
-    let(:coursename1) { "<p>Name: Basics</p>" }
-    let(:coursename2) { "<p>Name: Listening</p>" }
+    let(:coursename1) { "<h3>Name: Basics</h3>" }
+    let(:coursename2) { "<h3>Name: Listening</h3>" }
 
     it 'can see the name of each course in the system' do 
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
@@ -70,7 +70,7 @@ RSpec.describe "Courses index page", type: :feature do
      it 'has a link to create a new course' do 
         visit '/courses'
         
-        click_link('New Course')
+        click_button('New Course')
 
         expect(current_path).to eq('/courses/new')
     end 
