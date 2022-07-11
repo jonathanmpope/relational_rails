@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
     end 
 
     def create
-        Course.create(name: params[:name], participants: 0, complete: false)
+        Course.create(course_params)
         redirect_to "/courses"
     end
 
@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
 
     def update
         course = Course.find(params[:id])
-        course.update(name: params[:name])
+        course.update(course_params)
         redirect_to "/courses/#{course.id}"
     end 
 
@@ -31,5 +31,10 @@ class CoursesController < ApplicationController
         course.lessons.destroy_all
         course.destroy 
         redirect_to '/courses'
+    end 
+
+    private
+    def course_params
+	    params.permit(:name, :participants, :complete)  
     end 
 end 

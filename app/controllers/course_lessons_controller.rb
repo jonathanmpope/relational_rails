@@ -7,7 +7,6 @@ class CourseLessonsController < ApplicationController
             @lessons = @course.lessons.alphabet_order 
         elsif params[:commit] == "Filter"
             @lessons = @course.lessons.questions(params[:number])
-            # redirect_to "/courses/#{@course.id}/lessons?sort=questions"
         else 
             @lessons = @course.lessons
         end 

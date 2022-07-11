@@ -1,6 +1,6 @@
 <%= button_to "New Course", "/courses/new", method: :get %>
 <% @courses.each do |course| %>
-    <h3>Name: <%= course.name %></h3>
+    <h3>Name: <%= link_to "#{course.name}", "/courses/#{course.id}" %></h3>
     <h3>Participants: <%= course.participants %></h3>
         <% if course.complete == true %>
            <h3>Completed: yes</h3>
@@ -8,9 +8,7 @@
             <h3>Completed: no</h3>
         <% end %>
     <h3>Created: <%= course.created_at %></h3> 
-    <div class = "buttons">
     <%= button_to "Update #{course.name}", "/courses/#{course.id}/edit", method: :get, form_class: "new-thing" %>
     <%= button_to "Delete #{course.name}", "/courses/#{course.id}", method: :delete %>
     <%= button_to "View #{course.name} Lessons", "/courses/#{course.id}/lessons", method: :get %>
-    </div>
 <% end %>

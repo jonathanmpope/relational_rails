@@ -72,7 +72,7 @@ RSpec.describe 'Show page', type: :feature do
         lesson4 = course1.lessons.create!(name:"Quit tomorrow", format:"video", questions:1, complete: false)
         
         visit "/courses/#{course1.id}"
-        click_button('Course Lessons')
+        click_button("#{course1.name} Lessons")
 
         expect(current_path).to eq("/courses/#{course1.id}/lessons")
     end

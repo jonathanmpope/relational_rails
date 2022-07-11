@@ -6,7 +6,7 @@
     <%= form.number_field :number, required: true %>
     <%= form.submit "Filter"%>
 <% end %>
-
+<h1> <%= @course.name %> Lessons </h1>
 <% @lessons.each do |lesson| %>
     <h3>Name: <%= lesson.name %></h3>
     <h3>Format: <%= lesson.format %></h3>

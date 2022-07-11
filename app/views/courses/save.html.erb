@@ -1,0 +1,29 @@
+<%= form_with url:'/courses', method: :post, local: true do |form|%>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+    <%= form.label :participants %>
+    <%= form.number_field :participants, required: true %>
+    <p>Complete: </p>
+    <%= form.radio_button :complete, true %>
+    <%= form.label :complete, "yes" %>
+    <%= form.radio_button :complete, false %>
+    <%= form.label :complete, "no" %>
+    <br>
+    <br>
+    <%= form.submit button_text %>
+<% end %>
+
+<%= form_with url:"/courses/#{@course.id}", method: :patch, local: true do |form|%>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+    <%= form.label :participants %>
+    <%= form.number_field :participants, required: true %>
+    <p>Complete: </p>
+    <%= form.radio_button :complete, true %>
+    <%= form.label :complete, "yes" %>
+    <%= form.radio_button :complete, false %>
+    <%= form.label :complete, "no" %>
+    <br>
+    <br>
+    <%= form.submit "Update #{@course.name}"%>
+<% end %>

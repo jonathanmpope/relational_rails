@@ -1,4 +1,4 @@
-<h3><%= button_to "Course Lessons", "/courses/#{@course.id}/lessons", method: :get %></h3>
+<h3><%= button_to "#{@course.name} Lessons", "/courses/#{@course.id}/lessons", method: :get %></h3>
 <h1><%= @course.name %> </h1>
 <h3>Participants: <%= @course.participants %></h3>
 <h3>Number of lessons: <%= @course.lesson_count %></h3>
