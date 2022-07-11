@@ -2,7 +2,6 @@ class CourseLessonsController < ApplicationController
 
     def index
         @course = Course.find(params[:course_id])
-        # binding.pry 
         if params[:sort] == "alphabet" 
             @lessons = @course.lessons.alphabet_order 
         elsif params[:commit] == "Filter"
@@ -18,7 +17,12 @@ class CourseLessonsController < ApplicationController
 
     def create
         course = Course.find(params[:course_id])
-        course.lessons.create(name: params[:name], format: params[:format], questions: params[:questions], complete: false)
+        course.lessons.create(lesson_params)
         redirect_to "/courses/#{course.id}/lessons"
+    end 
+
+    private
+    def lesson_params
+        params.permit(:name, :format, :questions, :complete)  
     end 
 end 

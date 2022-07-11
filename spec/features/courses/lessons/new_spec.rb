@@ -9,6 +9,7 @@ RSpec.describe "Course Lessons new page", type: :feature do
         fill_in("Name", with:"Perception")
         fill_in("Format", with:"text")
         fill_in("Questions", with:2)
+        
         click_button("Create Lesson")
         
         expect(current_path).to eq("/courses/#{course1.id}/lessons")

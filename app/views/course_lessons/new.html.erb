@@ -10,6 +10,7 @@
     <br>
     <%= form.label :questions %>
     <%= form.number_field :questions, required: true %>
+    <%= form.hidden_field :complete, value: false %>
     <br>
     <br>
     <%= form.submit "Create Lesson"%>
