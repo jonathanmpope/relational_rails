@@ -21,7 +21,6 @@ RSpec.describe "Course Lessons new page", type: :feature do
         fill_in("Name", with:"Perception")
         fill_in("Format", with:"text")
         click_button("Create Lesson")
-        save_and_open_page
         
         expect(page).to_not have_content("Perception")
     end 
