@@ -12,7 +12,7 @@ RSpec.describe Lesson, type: :model do
         it { should  allow_value(true).for(:complete)}
     end 
 
-    describe 'instance methods' do 
+    describe 'class methods' do 
          describe '#self.show_true' do
             it 'will only show true lessons' do 
                 course1 = Course.create!(name: "Basics", participants: 20, complete: true)
