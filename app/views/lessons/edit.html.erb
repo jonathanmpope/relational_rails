@@ -12,7 +12,7 @@
     <br>
     <br>
     <p>Complete: </p>
-    <%= form.radio_button :complete, true %>
+    <%= form.radio_button :complete, true, required: true %>
     <%= form.label :complete, "yes" %>
     <%= form.radio_button :complete, false %>
     <%= form.label :complete, "no" %>
