@@ -1,12 +1,13 @@
-<h3><%= link_to "Course Lessons", "/courses/#{@course.id}/lessons" %></h3>
+<h3><%= button_to "#{@course.name} Lessons", "/courses/#{@course.id}/lessons", method: :get %></h3>
 <h1><%= @course.name %> </h1>
-<p>Participants: <%= @course.participants %></p>
+<h3>Participants: <%= @course.participants %></h3>
+<h3>Number of lessons: <%= @course.lesson_count %></h3>
 <% if @course.complete == true %>
-    <p>Completed: yes</p>
-    <h3><%= link_to "Update #{@course.name}", "/courses/#{@course.id}/edit" %></h3>
+    <h3>Completed: yes</h3>
+    <h3><%= button_to "Update #{@course.name}", "/courses/#{@course.id}/edit", method: :get %></h3>
 <% else %>
-    <p>Completed: no</p>
-    <h3><%= link_to "Update #{@course.name}", "/courses/#{@course.id}/edit" %></h3>
+    <h3>Completed: no</h3>
+    <h3><%= button_to "Update #{@course.name}", "/courses/#{@course.id}/edit", method: :get %></h3>
 <% end %>
 <%= button_to "Delete #{@course.name}", "/courses/#{@course.id}", method: :delete %>
-<p>Number of lessons: <%= @course.lesson_count %></p>
+

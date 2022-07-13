@@ -1,7 +1,3 @@
-# As a visitor
-# When I visit '/parents/:parent_id/child_table_name'
-# Then I see each Child that is associated with that Parent with each Child's attributes:
-
 require 'rails_helper'
 
 RSpec.describe 'Course lesson index page' do 
@@ -94,7 +90,7 @@ RSpec.describe 'Course lesson index page' do
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
         visit "/courses/#{course1.id}/lessons"
         
-        click_link('New Lesson')
+        click_button('New Lesson')
 
         expect(current_path).to eq("/courses/#{course1.id}/lessons/new")
     end 
@@ -120,7 +116,7 @@ RSpec.describe 'Course lesson index page' do
         expect(current_path).to eq("/lessons/#{lesson1.id}/edit")
     end 
 
-    it 'has a form that allows you to input a number' do
+    it 'has a form that allows you filter by number of lessons' do
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
         lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
         lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:0, complete: true)
@@ -129,7 +125,7 @@ RSpec.describe 'Course lesson index page' do
         fill_in("Number", with:2)
         click_button("Filter")
 
-        # expect(page).to have_current_path("/courses/#{course1.id}/lessons?sort=questions")
+        expect(page).to have_current_path("/courses/#{course1.id}/lessons?number=2&commit=Filter")
         expect(page).to_not have_content("Attention")
         expect(page).to have_content("Thinking about thinking")
 

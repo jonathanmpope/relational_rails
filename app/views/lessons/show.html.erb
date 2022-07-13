@@ -1,10 +1,10 @@
 <h3>Name: <%= @lesson.name %></h3>
-<p>Format: <%= @lesson.format %></p>
-<p>Questions: <%= @lesson.questions %></p>
+<h3>Format: <%= @lesson.format %></h3>
+<h3>Questions: <%= @lesson.questions %></h3>
         <% if @lesson.complete == true %>
-            <p>Completed: yes</p>
+            <h3>Completed: yes</h3>
         <% else %>
-            <p>Completed: no</p>
+            <h3>Completed: no</h3>
         <% end %>
-<h3><%= link_to "Update #{@lesson.name}", "/lessons/#{@lesson.id}/edit" %></h3>
+<h3><%= button_to "Update #{@lesson.name}", "/lessons/#{@lesson.id}/edit", method: :get %></h3>
 <%= button_to "Delete #{@lesson.name}", "/lessons/#{@lesson.id}", method: :delete %>

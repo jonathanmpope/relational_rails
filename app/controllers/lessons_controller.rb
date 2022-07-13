@@ -15,7 +15,7 @@ class LessonsController < ApplicationController
 
         def update
             lesson = Lesson.find(params[:lesson_id])
-            lesson.update(name: params[:name], format: params[:format], questions: params[:questions], complete: false)
+            lesson.update(lesson_params)
             redirect_to "/lessons/#{lesson.id}"
         end 
 
@@ -24,4 +24,9 @@ class LessonsController < ApplicationController
             lesson.destroy  
             redirect_to '/lessons'
         end
+
+        private
+        def lesson_params
+            params.permit(:name, :format, :questions, :complete)  
+        end 
 end 

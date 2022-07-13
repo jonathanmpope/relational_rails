@@ -11,4 +11,8 @@ class Course < ApplicationRecord
     def self.course_order
         order(created_at: :desc)
     end
+
+    def self.sort_by_num_lessons
+       Course.joins(:lessons).group(:id).order(Arel.sql('COUNT(courses.id) DESC'))   
+    end 
 end 

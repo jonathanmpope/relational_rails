@@ -1,5 +1,2 @@
-<%= form_with url:'/courses', method: :post, local: true do |form|%>
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true %>
-    <%= form.submit "Create Course"%>
-<% end %>
+<h1>Create a new course: </h1>
+<%= render partial: "form", locals: { path: '/courses', method: :post, button_text: 'Create Course' } %>

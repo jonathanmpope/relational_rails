@@ -1,15 +1,16 @@
-<%= render "links" %>
+<%= link_to "Sort Courses By Number of Lessons", "/courses?sort=number" %>
+<%= button_to "New Course", "/courses/new", method: :get %>
 <% @courses.each do |course| %>
-    <p>Name: <%= course.name %></p>
-    <p>Participants: <%= course.participants %></p>
+    <h3>Name: <%= link_to "#{course.name}", "/courses/#{course.id}" %></h3>
+    <h3>Number of lessons: <%= course.lesson_count %></h3>
+    <h3>Participants: <%= course.participants %></h3>
         <% if course.complete == true %>
-           <p>Completed: yes</p>
+           <h3>Completed: yes</h3>
         <% else %>
-            <p>Completed: no</p>
+            <h3>Completed: no</h3>
         <% end %>
-    <p>Created: <%= course.created_at %></p> 
-    <%= button_to "Update #{course.name}", "/courses/#{course.id}/edit", method: :get %>
+    <h3>Created: <%= course.created_at %></h3> 
+    <%= button_to "Update #{course.name}", "/courses/#{course.id}/edit", method: :get, form_class: "new-thing" %>
     <%= button_to "Delete #{course.name}", "/courses/#{course.id}", method: :delete %>
     <%= button_to "View #{course.name} Lessons", "/courses/#{course.id}/lessons", method: :get %>
-
 <% end %>

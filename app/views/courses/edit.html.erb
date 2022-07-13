@@ -1,5 +1,2 @@
-<%= form_with url:"/courses/#{@course.id}", method: :patch, local: true do |form|%>
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true %>
-    <%= form.submit "Update Course"%>
-<% end %>
+<%= render partial: "form", locals: { path: "/courses/#{@course.id}", method: :patch, button_text: 'Update Course' } %>
+

@@ -1,21 +1,21 @@
-<%= link_to "Sort Lessons Alphabetically", "/courses/#{@course.id}/lessons?sort=alphabet", method: :get %>
+<%= link_to "Sort Lessons Alphabetically", "/courses/#{@course.id}/lessons?sort=alphabet" %>
 <br>
 <br>
-<%= form_with url:"/courses/#{@course.id}/lessons?sort=questions", method: :get, local: true do |form|%>
+<%= form_with url:"/courses/#{@course.id}/lessons?number=#{params[:number]}&commit=Filter", method: :get, local: true, skip_enforcing_utf8: true do |form|%>
     <%= form.label :number, "Filter by Number of Questions" %>
-    <%= form.number_field :number, required: true %>
-    <%= form.submit "Filter"%>
+    <%= form.number_field :number, placeholder: "Any number, e.g. 3 ", required: true %>
+    <%= form.submit "Filter" %>
 <% end %>
-
+<h1> <%= @course.name %> Lessons </h1>
 <% @lessons.each do |lesson| %>
-    <p>Name: <%= lesson.name %><p>
-    <p>Format: <%= lesson.format %><p>
-    <p>Questions: <%= lesson.questions %><p>
+    <h3>Name: <%= lesson.name %></h3>
+    <h3>Format: <%= lesson.format %></h3>
+    <h3>Questions: <%= lesson.questions %></h3>
     <% if lesson.complete == true %>
-        <p>Completed: yes</p>
+        <h3>Completed: yes</h3>
     <% else %>
-        <p>Completed: no</p>
+        <h3>Completed: no</h3>
     <% end %>
     <%= button_to "Update #{lesson.name}", "/lessons/#{lesson.id}/edit", method: :get %>
 <% end %>
-<h3><%= link_to "New Lesson", "/courses/#{@course.id}/lessons/new" %></h3>
+<h3><%= button_to "New Lesson", "/courses/#{@course.id}/lessons/new", method: :get %></h3>

@@ -1,7 +1,3 @@
-# As a visitor
-# When I visit '/child_table_name/:id'
-# Then I see the child with that id including the child's attributes:
-
 require 'rails_helper'
 
 RSpec.describe 'lessons show page' do 
@@ -69,7 +65,7 @@ RSpec.describe 'lessons show page' do
         lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
 
         visit "/lessons/#{lesson1.id}"
-        click_link("Update #{lesson1.name}")
+        click_button("Update #{lesson1.name}")
 
         expect(current_path).to eq("/lessons/#{lesson1.id}/edit")
     end

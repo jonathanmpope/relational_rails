@@ -1,13 +1,8 @@
 require 'rails_helper'
 
-# For each parent table
-# As a visitor
-# When I visit '/parents'
-# Then I see the name of each parent record in the system
-
 RSpec.describe "Courses index page", type: :feature do 
-    let(:coursename1) { "<p>Name: Basics</p>" }
-    let(:coursename2) { "<p>Name: Listening</p>" }
+    let(:coursename1) { "Basics" }
+    let(:coursename2) { "Listening" }
 
     it 'can see the name of each course in the system' do 
         course1 = Course.create!(name: "Basics", participants: 20, complete: false)
@@ -73,9 +68,8 @@ RSpec.describe "Courses index page", type: :feature do
     end 
 
      it 'has a link to create a new course' do 
-        visit '/courses'
-        
-        click_link('New Course')
+        visit '/courses'        
+        click_button('New Course')
 
         expect(current_path).to eq('/courses/new')
     end 
@@ -97,5 +91,34 @@ RSpec.describe "Courses index page", type: :feature do
 
         expect(current_path).to eq("/courses")
         expect(page).to_not have_content("Basics")
+    end 
+
+    it 'has a link to sort by number of lessons in each course' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+        course2 = Course.create!(name: "Listening", participants: 12, complete: false)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+        lesson2 = course2.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+        lesson3 = course2.lessons.create!(name:"Trying is lying", format:"text", questions:2, complete: false)
+        lesson4 = course2.lessons.create!(name:"Quit tomorrow", format:"video", questions:1, complete: false)
+
+        visit '/courses'        
+        click_link('Sort Courses By Number of Lessons')
+
+        expect(current_path).to eq("/courses")
+        expect(coursename2).to appear_before(coursename1)     
+    end 
+
+     it 'shows the number of lessons next to each course' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+        course2 = Course.create!(name: "Listening", participants: 12, complete: false)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+        lesson2 = course2.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+        lesson3 = course2.lessons.create!(name:"Trying is lying", format:"text", questions:2, complete: false)
+        lesson4 = course2.lessons.create!(name:"Quit tomorrow", format:"video", questions:1, complete: false)
+
+        visit '/courses'        
+
+        expect(page).to have_content("Number of lessons: 1")   
+        expect(page).to have_content("Number of lessons: 3")   
     end 
 end 

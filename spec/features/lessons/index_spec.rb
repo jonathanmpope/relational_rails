@@ -1,7 +1,3 @@
-# As a visitor
-# When I visit '/child_table_name'
-# Then I see each Child in the system including the Child's attributes:
-
 require 'rails_helper'
 
 RSpec.describe 'lesson index page', type: :feature do 
