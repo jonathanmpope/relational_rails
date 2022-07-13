@@ -1,3 +1,8 @@
+<%= form_with url: '/lessons', method: :get, local: true do |form|%>
+    <%= form.label "Search for a lesson:" %>
+    <%= form.text_field :search, placeholder: "Lesson name", required: true %>
+     <%= form.submit "Search" %>
+<% end %>
 <% @lessons.each do |lesson| %>
     <h3>Name: <%= link_to "#{lesson.name}", "/lessons/#{lesson.id}" %></h3>
     <h3>Format: <%= lesson.format %></h3>

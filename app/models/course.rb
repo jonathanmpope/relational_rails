@@ -13,10 +13,10 @@ class Course < ApplicationRecord
     end
 
     def self.sort_by_num_lessons
-        Course.left_outer_joins(:lessons).group(:id).order(Arel.sql('COUNT(courses.id) DESC'))   
+        left_outer_joins(:lessons).group(:id).order(Arel.sql('COUNT(courses.id) DESC'))   
     end 
 
     def self.contain_word(word)
-        Course.where("name LIKE ?", "%#{word}%")
+        where("name LIKE ?", "%#{word}%")
     end
 end 

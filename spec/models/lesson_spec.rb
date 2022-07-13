@@ -49,6 +49,17 @@ RSpec.describe Lesson, type: :model do
                 
                 expect(Lesson.questions(3).length).to eq(2)
             end 
-        end 
+        end
+        
+        describe '#self.contain_word' do
+            it 'searches for a partial match of a lesson name' do 
+                course1 = Course.create!(name: "Hello World", participants: 20, complete: true)
+                lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+                lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+
+                expect(Lesson.contain_word("ten")[0]).to eq(lesson2)  
+                expect(Lesson.contain_word("ten").count).to eq(1)  
+            end 
+        end
     end 
 end 
