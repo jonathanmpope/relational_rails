@@ -13,6 +13,6 @@ class Course < ApplicationRecord
     end
 
     def self.sort_by_num_lessons
-       Course.joins(:lessons).group(:id).order(Arel.sql('COUNT(courses.id) DESC'))   
+        Course.left_outer_joins(:lessons).group(:id).order(Arel.sql('COUNT(courses.id) DESC'))   
     end 
 end 

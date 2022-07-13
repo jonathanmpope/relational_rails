@@ -17,7 +17,10 @@
       </ul>
     </nav>
     <section class = "item-c">
-    <%= yield %>
+       <% flash.each do |type, message| %>
+        <p><%= message %></p>
+      <% end %>
+      <%= yield %>
     </section>
     <footer class="item-d"> Something catchy </footer>
   </body>

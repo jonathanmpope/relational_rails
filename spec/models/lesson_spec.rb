@@ -13,7 +13,7 @@ RSpec.describe Lesson, type: :model do
     end 
 
     describe 'class methods' do 
-         describe '#self.show_true' do
+        describe '#self.show_true' do
             it 'will only show true lessons' do 
                 course1 = Course.create!(name: "Basics", participants: 20, complete: true)
                 course1.lessons.create!(name:"Thinking about Thinking", format:"text", questions:3, complete: false)
@@ -27,7 +27,7 @@ RSpec.describe Lesson, type: :model do
             end 
          end
          
-         describe '#alphabet_order' do
+        describe '#self.alphabet_order' do
             it 'should return the lessons in alphabetical order' do 
                 course1 = Course.create!(name: "Basics", participants: 20, complete: false)
                 lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
@@ -39,7 +39,7 @@ RSpec.describe Lesson, type: :model do
             end 
         end 
 
-        describe '#questions' do
+        describe '#self.questions' do
             it 'should return only lessons equal to or above the query' do 
                 course1 = Course.create!(name: "Basics", participants: 20, complete: false)
                 lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
