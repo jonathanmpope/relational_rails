@@ -1,10 +1,10 @@
 <%= link_to "Sort Lessons Alphabetically", "/courses/#{@course.id}/lessons?sort=alphabet" %>
 <br>
 <br>
-<%= form_with url:"/courses/#{@course.id}/lessons?sort=questions", method: :get, local: true do |form|%>
+<%= form_with url:"/courses/#{@course.id}/lessons?number=#{params[:number]}&commit=Filter", method: :get, local: true, skip_enforcing_utf8: true do |form|%>
     <%= form.label :number, "Filter by Number of Questions" %>
-    <%= form.number_field :number, required: true %>
-    <%= form.submit "Filter"%>
+    <%= form.number_field :number, placeholder: "Any number, e.g. 3 ", required: true %>
+    <%= form.submit "Filter" %>
 <% end %>
 <h1> <%= @course.name %> Lessons </h1>
 <% @lessons.each do |lesson| %>

@@ -4,7 +4,7 @@ class CourseLessonsController < ApplicationController
         @course = Course.find(params[:course_id])
         if params[:sort] == "alphabet" 
             @lessons = @course.lessons.alphabet_order 
-        elsif params[:commit] == "Filter"
+        elsif params[:number] != nil 
             @lessons = @course.lessons.questions(params[:number])
         else 
             @lessons = @course.lessons

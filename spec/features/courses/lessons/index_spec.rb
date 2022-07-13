@@ -125,7 +125,7 @@ RSpec.describe 'Course lesson index page' do
         fill_in("Number", with:2)
         click_button("Filter")
 
-        expect(page).to have_current_path("/courses/#{course1.id}/lessons?utf8=%E2%9C%93&number=2&commit=Filter")
+        expect(page).to have_current_path("/courses/#{course1.id}/lessons?number=2&commit=Filter")
         expect(page).to_not have_content("Attention")
         expect(page).to have_content("Thinking about thinking")
 
