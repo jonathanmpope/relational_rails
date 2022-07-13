@@ -92,4 +92,19 @@ RSpec.describe "Courses index page", type: :feature do
         expect(current_path).to eq("/courses")
         expect(page).to_not have_content("Basics")
     end 
+
+    it 'has a link to sort by number of lessons in each course' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+        course2 = Course.create!(name: "Listening", participants: 12, complete: false)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+        lesson2 = course2.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+        lesson3 = course2.lessons.create!(name:"Trying is lying", format:"text", questions:2, complete: false)
+        lesson4 = course2.lessons.create!(name:"Quit tomorrow", format:"video", questions:1, complete: false)
+
+        visit '/courses'        
+        click_link('Sort Courses By Number of Lessons')
+
+        expect(current_path).to eq("/courses")
+        expect(coursename2).to appear_before(coursename1)     
+    end 
 end 

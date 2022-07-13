@@ -1,7 +1,11 @@
 class CoursesController < ApplicationController
 
     def index 
-        @courses = Course.course_order 
+        if params[:sort] == "number"
+            @courses = Course.sort_by_num_lessons
+        else 
+            @courses = Course.course_order 
+        end 
     end 
 
     def show 

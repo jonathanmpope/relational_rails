@@ -1,6 +1,8 @@
+<%= link_to "Sort Courses By Number of Lessons", "/courses?sort=number" %>
 <%= button_to "New Course", "/courses/new", method: :get %>
 <% @courses.each do |course| %>
     <h3>Name: <%= link_to "#{course.name}", "/courses/#{course.id}" %></h3>
+    <h3>Number of lessons: <%= course.lesson_count %></h3>
     <h3>Participants: <%= course.participants %></h3>
         <% if course.complete == true %>
            <h3>Completed: yes</h3>
