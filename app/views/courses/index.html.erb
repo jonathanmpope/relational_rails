@@ -1,4 +1,6 @@
 <%= link_to "Sort Courses By Number of Lessons", "/courses?sort=number" %>
+<br>
+<br>
 <%= button_to "New Course", "/courses/new", method: :get %>
 <% @courses.each do |course| %>
     <h3>Name: <%= link_to "#{course.name}", "/courses/#{course.id}" %></h3>
