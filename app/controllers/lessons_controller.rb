@@ -2,7 +2,11 @@
 class LessonsController < ApplicationController
 
         def index 
-            @lessons = Lesson.show_true 
+            if params[:search] != nil 
+                @lessons = Lesson.contain_word(params[:search])
+            else 
+                @lessons = Lesson.show_true 
+            end 
         end 
 
         def show 

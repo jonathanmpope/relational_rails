@@ -8,7 +8,7 @@
 <% end %>
 <h1> <%= @course.name %> Lessons </h1>
 <% @lessons.each do |lesson| %>
-    <h3>Name: <%= lesson.name %></h3>
+    <h3>Name: <%= link_to "#{lesson.name}", "/lessons/#{lesson.id}" %> </h3>
     <h3>Format: <%= lesson.format %></h3>
     <h3>Questions: <%= lesson.questions %></h3>
     <% if lesson.complete == true %>

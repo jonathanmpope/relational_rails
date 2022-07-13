@@ -121,4 +121,16 @@ RSpec.describe "Courses index page", type: :feature do
         expect(page).to have_content("Number of lessons: 1")   
         expect(page).to have_content("Number of lessons: 3")   
     end 
+
+    it 'can do a partial course name search' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+        course2 = Course.create!(name: "Listening", participants: 12, complete: false)
+
+        visit '/courses' 
+        fill_in("search", with:"asic")
+        click_button("Search")
+
+        expect(page).to have_content("Basics")   
+        expect(page).to_not have_content("Listening")   
+    end 
 end 

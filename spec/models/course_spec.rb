@@ -49,5 +49,15 @@ RSpec.describe Course , type: :model do
                 expect(Course.sort_by_num_lessons[1].id).to eq(course1.id)   
             end 
         end
+
+        describe '#self.contain_word' do
+            it 'searches for a partial match of a course name' do 
+                course1 = Course.create!(name: "Hello World", participants: 20, complete: true)
+                course2 = Course.create!(name: "Newer", participants: 12, complete: false)
+
+                expect(Course.contain_word("ello")[0]).to eq(course1)  
+                expect(Course.contain_word("ello").count).to eq(1)  
+            end 
+        end
     end 
 end 

@@ -17,4 +17,8 @@ class Lesson < ApplicationRecord
         num = number_string.to_i
         where("questions >= #{num}")
     end 
+
+    def self.contain_word(word)
+        where("name LIKE ?", "%#{word}%")
+    end
 end 

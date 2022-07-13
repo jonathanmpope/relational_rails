@@ -3,6 +3,8 @@ class CoursesController < ApplicationController
     def index 
         if params[:sort] == "number"
             @courses = Course.sort_by_num_lessons
+        elsif params[:search] != nil 
+            @courses = Course.contain_word(params[:search])
         else 
             @courses = Course.course_order 
         end 
@@ -17,7 +19,7 @@ class CoursesController < ApplicationController
 
     def create
         Course.create(course_params)
-        redirect_to "/courses"
+        redirect_to '/courses'
     end
 
     def edit
