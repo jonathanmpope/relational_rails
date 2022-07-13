@@ -74,4 +74,19 @@ RSpec.describe 'lesson index page', type: :feature do
         expect(current_path).to eq("/lessons")
         expect(page).to_not have_content("Thinking about thinking")
     end 
+
+    it 'can do a partial lesson name search' do 
+        course1 = Course.create!(name: "Basics", participants: 20, complete: true)
+        lesson1 = course1.lessons.create!(name:"Thinking about thinking", format:"text", questions:3, complete: true)
+        lesson2 = course1.lessons.create!(name:"Attention", format:"text", questions:3, complete: true)
+        lesson3 = course1.lessons.create!(name:"Trying is lying", format:"text", questions:2, complete: false)
+        
+        visit '/lessons' 
+        fill_in("search", with:"about")
+        click_button("Search")
+
+        expect(page).to have_content("Thinking about thinking")   
+        expect(page).to_not have_content("Attention")   
+        expect(page).to_not have_content("Trying is lying")   
+    end 
 end 
