@@ -18,6 +18,7 @@ class CoursesController < ApplicationController
     end 
 
     def create
+        binding.pry 
         Course.create(course_params)
         redirect_to '/courses'
     end
